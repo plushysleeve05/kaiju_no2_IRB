@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_FILES['proposal_file'])) {
         $file_error = $_FILES['proposal_file']['error'];
         if ($file_error == UPLOAD_ERR_OK) {
-            $upload_dir = '../uploads';
+            $upload_dir = '../uploads/';
             if (!is_dir($upload_dir)) {
                 $response = "Upload directory does not exist: $upload_dir";
                 echo $response;
