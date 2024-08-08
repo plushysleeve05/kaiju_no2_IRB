@@ -47,38 +47,9 @@ Review Process: Administrators and reviewers can view, comment on, and approve o
 Dashboard: Custom dashboards for researchers and administrators to manage their tasks.
 Plagiarism Check: Integrated plagiarism checking for submitted documents.
 Responsive Design: The application is designed to be fully responsive and user-friendly.
-Installation
-Prerequisites
-PHP: Ensure PHP is installed on your server.
-MySQL: A MySQL database is required to store user data and proposal information.
-Web Server: Apache or any other web server that supports PHP.
-OpenAI API Key: A valid OpenAI API key is required for the AI-based review functionality.
-Setup Instructions
-Clone the repository:
 
-bash
-Copy code
-git clone <repository-url>
-Navigate to the project directory:
+Link to site:
 
-bash
-Copy code
-cd kaiju_no2_IRB
-Import the database:
-
-Open your MySQL client and create a new database.
-Import the provided SQL files (Ashesi_IRB.sql and queries-3.sql) into your MySQL database.
-Configure the application:
-
-Update the config.php file in the settings directory with your database credentials.
-Add your OpenAI API key to the configuration for enabling the AI-based review functionality.
-Deploy the application:
-
-Place the project files in your web server's root directory.
-Start the web server.
-Access the application:
-
-Open your web browser and navigate to http://localhost/ to access the application.
 Usage
 For Researchers
 Submit Proposals: Upload your research proposals and related documents.
