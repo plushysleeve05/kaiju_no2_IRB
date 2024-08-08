@@ -1,6 +1,6 @@
 <?php
 define("DBHOST", "localhost");
-define("DBNAME", "Ashesi IRB");
+define("DBNAME", "ashesi_irb");
 define("DBUSER", "root");
 define("DBPASS", "");
 

@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, jsonify
 from openai import OpenAI
 from dotenv import load_dotenv
 import yaml
@@ -14,10 +14,6 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['ALLOWED_EXTENSIONS'] = {'pdf', 'docx'}
 
-# Load other configurations from config.yaml
-# with open("config.yaml") as f:
-#     config_yaml = yaml.load(f, Loader=yaml.FullLoader)
-
 # Get the API key from environment variable
 api_key = os.getenv('OPENAI_API_KEY')
 
@@ -25,7 +21,6 @@ api_key = os.getenv('OPENAI_API_KEY')
 client = OpenAI(api_key=api_key)
 
 # Other code...
-
 
 # Define the threshold for generating comments
 section_score_threshold = 7  # Scores below this will get comments
@@ -160,21 +155,20 @@ def process_paper(file_path):
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/upload', methods=['POST'])
 def upload_file():
-    if request.method == 'POST':
-        if 'file' not in request.files:
-            return redirect(request.url)
-        file = request.files['file']
-        if file.filename == '':
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = file.filename
-            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            file.save(filepath)
-            results = process_paper(filepath)
-            return render_template('results.html', results=results)
-    return render_template('upload.html')
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file part'}), 400
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'error': 'No selected file'}), 400
+    if file and allowed_file(file.filename):
+        filename = file.filename
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(filepath)
+        results = process_paper(filepath)
+        return jsonify(results)
+    return jsonify({'error': 'Invalid file format'}), 400
 
 if __name__ == '__main__':
     if not os.path.exists(app.config['UPLOAD_FOLDER']):
