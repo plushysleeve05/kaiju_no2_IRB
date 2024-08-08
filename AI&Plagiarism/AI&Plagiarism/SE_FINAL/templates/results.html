@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Evaluation Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Research Paper Evaluation Results</h2>
+        <hr>
+        <!-- <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Scores</h4>
+                <ul class="list-group list-group-flush">
+                    {% for section, score in results.scores.items() %}
+                        <li class="list-group-item"><strong>{{ section }}:</strong> {{ score }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div> -->
+        <!-- <div class="card mt-3">
+            <div class="card-body">
+                <h4 class="card-title">Overall Score</h4>
+                <p class="card-text">{{ results.overall_score }}</p>
+            </div>
+        </div> -->
+        <!-- <div class="card mt-3">
+            <div class="card-body">
+                <h4 class="card-title">Pass/Fail</h4>
+                <p class="card-text">{{ "Pass" if results.pass else "Fail" }}</p>
+            </div>
+        </div> -->
+        <!-- <div class="card mt-3">
+            <div class="card-body">
+                <h4 class="card-title">Overall Comment</h4>
+                <p class="card-text">{{ results.overall_comment }}</p>
+            </div>
+        </div> -->
+        <div class="card mt-3">
+            <div class="card-body">
+                <h4 class="card-title">Comments</h4>
+                {% for section, comment in results.comments.items() %}
+                    <h5>{{ section }}</h5>
+                    <p>{{ comment }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        {% for key, value in results.items() %}
+            {% if key.startswith("comments_for_") %}
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ key.replace("comments_for_", "Comments for ") }}</h4>
+                        <p class="card-text">{{ value }}</p>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>
