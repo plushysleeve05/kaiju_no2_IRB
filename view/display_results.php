@@ -8,10 +8,23 @@ if (!isset($_SESSION['ai_results']) || !isset($_SESSION['document'])) {
 $ai_results = $_SESSION['ai_results'];
 $document = $_SESSION['document'];
 
-// Fetch existing reviewer comments from the database (if any)
+// Fetch the proposal ID based on the file path
 require_once('../settings/config.php');
-$stmt = $conn->prepare("SELECT comments FROM reviews WHERE proposal_id = ?");
+$stmt = $conn->prepare("SELECT proposal_id FROM proposals WHERE file_path = ?");
 $stmt->bind_param("s", $document);
+$stmt->execute();
+$stmt->bind_result($proposal_id);
+$stmt->fetch();
+$stmt->close();
+
+if (!$proposal_id) {
+    echo "Error: No matching proposal found for the selected document.";
+    exit;
+}
+
+// Fetch existing reviewer comments from the database (if any)
+$stmt = $conn->prepare("SELECT comments FROM reviews WHERE proposal_id = ?");
+$stmt->bind_param("s", $proposal_id);
 $stmt->execute();
 $stmt->bind_result($reviewer_comments);
 $stmt->fetch();
@@ -24,12 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['reviewer_comments'])) 
     if ($reviewer_comments) {
         // Update existing comments
         $stmt = $conn->prepare("UPDATE reviews SET comments = ?, review_date = NOW() WHERE proposal_id = ?");
-        $stmt->bind_param("ss", $new_comments, $document);
+        $stmt->bind_param("ss", $new_comments, $proposal_id);
     } else {
         // Insert new comments
         $stmt = $conn->prepare("INSERT INTO reviews (proposal_id, reviewer_id, review_date, comments) VALUES (?, ?, NOW(), ?)");
         $reviewer_id = 1; // Assuming the reviewer's ID is 1; this should be dynamic
-        $stmt->bind_param("sis", $document, $reviewer_id, $new_comments);
+        $stmt->bind_param("sis", $proposal_id, $reviewer_id, $new_comments);
     }
     $stmt->execute();
     $stmt->close();
@@ -108,8 +121,8 @@ $detailed_comments = $ai_results; // Adding detailed comments
         }
 
         .results,
-        .comments-section,
-        .detailed-comments-section {
+        .detailed-comments-section,
+        .comments-section {
             margin: 20px 0;
         }
 
@@ -172,14 +185,14 @@ $detailed_comments = $ai_results; // Adding detailed comments
         </div>
     </div>
     <div class="container">
-        <div class="notification-panel">
+        <!-- <div class="notification-panel">
             <h2>Notification Panel</h2>
             <p>Failed to load notifications.</p>
         </div>
         <div class="buttons">
             <a href="#">View Previous Submissions</a>
             <a href="#">Submit A Proposal</a>
-        </div>
+        </div> -->
         <div class="results">
             <h3>AI Evaluation Results</h3>
             <div class="section">
@@ -202,17 +215,6 @@ $detailed_comments = $ai_results; // Adding detailed comments
                 <?php endforeach; ?>
             </div>
         </div>
-        <div class="comments-section">
-            <h3>Reviewer Comments</h3>
-            <div class="comments">
-                <form action="display_results.php" method="POST">
-                    <textarea name="reviewer_comments" placeholder="Add your comments here..."><?php echo htmlspecialchars($reviewer_comments); ?></textarea>
-                    <div class="submit-comments">
-                        <button type="submit">Submit Comments</button>
-                    </div>
-                </form>
-            </div>
-        </div>
         <div class="detailed-comments-section">
             <h3>Detailed AI Comments</h3>
             <div class="detailed-comments">
@@ -226,6 +228,17 @@ $detailed_comments = $ai_results; // Adding detailed comments
                         <p><?php echo nl2br(htmlspecialchars($value)); ?></p>
                     <?php endif; ?>
                 <?php endforeach; ?>
+            </div>
+        </div>
+        <div class="comments-section">
+            <h3>Reviewer Comments</h3>
+            <div class="comments">
+                <form action="display_results.php" method="POST">
+                    <textarea name="reviewer_comments" placeholder="Add your comments here..."><?php echo htmlspecialchars($reviewer_comments); ?></textarea>
+                    <div class="submit-comments">
+                        <button type="submit">Submit Comments</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
