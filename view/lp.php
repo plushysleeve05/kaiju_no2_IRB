@@ -19,7 +19,9 @@
         <li><a href="lp.php">Home</a></li>
         <li><a href="researcher_plagiarism_view.php">Plagiarism checker</a></li>
         <li><a href="signup.php">Sign Up</a></li>
-        <li><a href="researcher_dash.php">Submit a paper</a></li> <!-- Added a link for completeness -->
+        <li><a href="researcher_dash.php">Submit a paper</a></li>
+        </li>
+        <li><a href="view_documents.php">Review Paper as reviewer</a></li> <!-- Added a link for completeness -->
       </ul>
     </nav>
     <div class="profile">
@@ -39,7 +41,7 @@
             Submit your proposal
           </button>
           <button>
-            Access Reviews
+            <a href="view_documents.php"></a>Access Reviews
           </button>
         </div>
       </div>

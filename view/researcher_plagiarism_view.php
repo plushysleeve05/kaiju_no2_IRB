@@ -1,68 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Researcher Plagiarism Score | Ashesi IRB</title>
-    <link rel="stylesheet" href="../css/researcher_dash.css">
-            <!--  -->
+    <title>Plagiarism Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
-    <link rel="apple-touch-icon" sizes="180x180" href="../images/url_logo/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../images/url_logo//favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../images/url_logo//favicon-16x16.png"> 
-    <link rel="manifest" href="../images/url_logo//site.webmanifest">
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header,
+        .footer {
+            background-color: #800000;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .header a,
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .submit-button {
+            background-color: #800000;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .plagiarism-score {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .sources {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
 </head>
+
 <body>
-     <!--Resuable Header-->
-     <header>
-        <div class="Logo_section">
-        <a href = "researcher_dash.php">
-            <img src="../assets/images/ashesi_logo.png" alt="Ashesi Logo">
-            
-
-            <div class="IRB_title">
-                <h1>INSTITUTIONAL</h1>
-                <h1>REVIEW</h1>
-                <h1>BOARD</h1>
-            </div> 
-        </a>
+    <div class="header">
+        <div class="container">
+            <a href="#">Home</a>
+            <a href="#">Plagiarism checker</a>
+            <a href="#">Submit a paper</a>
         </div>
+    </div>
+    <div class="container">
+        <h1>Plagiarism Checker</h1>
 
-        <div id="menu_bar">
-            <div class="inner_menu_bar">
-                <a href="lp.php">Home</a>
-                <a href="researcher_plagiarism_view.php">Plagiarism checker</a>
-                <a href="researcher_dash.php">Submit a paper</a>
-            
+        <form action="researcher_plagiarism_view.php" method="POST">
+            <div class="form-group">
+                <label for="text_to_check">Enter your text to check for plagiarism:</label>
+                <textarea name="text_to_check" id="text_to_check" required></textarea>
             </div>
-            <div id="User_profile">
-                <span><p1>Name</p1></span>
-                <span><img src="../assets/images/profile_img.png" alt="Ashesi Logo" height="30"></span>
+            <div class="form-group">
+                <button type="submit" class="submit-button">Check Plagiarism</button>
             </div>
-        </div>
+        </form>
 
-    </header>
-    <main>
-        <br><br>
-        <div class="wrap">
-            <div class="score_box">
-                <span class="score_title">Plagiarism Score: </span><span class="score-percentage">50%</span>
-                <div class="bar">
-                    <div class="score-per" per="50%" style="max-width: 50%;"></div>
-                </div>
-            </div>
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $text_to_check = $_POST['text_to_check'];
 
+            // Set up cURL to call the Flask API
+            $flask_api_url = 'http://localhost:5000/check_plagiarism';
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $flask_api_url);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+            ));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(array('text' => $text_to_check)));
 
-            <div id="view_prev_plag">
-                <h2 id="view_proposal_title">View Proposal</h2>
-                <div id="view_proposal">query</div>
+            $response = curl_exec($ch);
+            curl_close($ch);
 
-                <span id="back_button"> <a href="researcher_prev_sub.php">Go back</span>
-            </div>
-        </div>
+            $response_data = json_decode($response, true);
 
-        
-    </main>
-    
+            if (isset($response_data['plagiarism_score'])) {
+                $plagiarism_score = $response_data['plagiarism_score'];
+                $sources = $response_data['sources'];
+
+                echo "<div class='plagiarism-score'>Plagiarism Score: {$plagiarism_score}%</div>";
+
+                if ($sources) {
+                    echo "<div class='sources'><h3>Sources:</h3><ul>";
+                    foreach ($sources as $source => $percentage) {
+                        echo "<li>{$source} - {$percentage}%</li>";
+                    }
+                    echo "</ul></div>";
+                } else {
+                    echo "<p>No sources found.</p>";
+                }
+            } else {
+                echo "<p>Failed to check for plagiarism. Please try again.</p>";
+            }
+        }
+        ?>
+
+        <a href="index.php" class="button">Go back</a>
+    </div>
 </body>
+
 </html>
