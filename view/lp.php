@@ -15,11 +15,11 @@
   </header>
   <div class="navbar-container">
     <nav class="nav">
-      <ul class="nav-menu">
-        <li>Home</li>
-        <li>View Reviewed Papers</li>
-        <li>Sign up</li>
-        <li>Home</li>
+      <ul>
+        <li><a href="lp.php">Home</a></li>
+        <li><a href="researcher_plagiarism_view.php">Plagiarism checker</a></li>
+        <li><a href="signup.php">Sign Up</a></li>
+        <li><a href="researcher_dash.php">Submit a paper</a></li> <!-- Added a link for completeness -->
       </ul>
     </nav>
     <div class="profile">
