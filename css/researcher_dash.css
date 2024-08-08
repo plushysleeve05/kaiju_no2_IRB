@@ -1,5 +1,40 @@
+@font-face {
+    font-family: "Sen Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Sen Regular"),
+    url("../assets/font/sen-cufonfonts-webfont/Sen-Regular.woff") format("woff");
+}
+  
+@font-face {
+    font-family: "Sen Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Sen Regular"),
+    url("../assets/font/sen-cufonfonts-webfont/Sen-Regular.woff") format("woff");
+}
+  
+@font-face {
+    font-family: "Sen Bold";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Sen Bold"),
+    url("../assets/font/sen-cufonfonts-webfont/Sen-Bold.woff") format("woff");
+}
+  
+@font-face {
+    font-family: "Sen ExtraBold";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Sen ExtraBold"),
+    url("../assets/font/sen-cufonfonts-webfont/Sen-ExtraBold.woff")
+    format("woff");
+}
+
+
+
 *{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Sen Regular";
     margin-bottom: 0;
     a{
         text-decoration: none;
@@ -110,7 +145,7 @@
     display: inline-block;
     padding: 80px 0px 80px 0px;
     padding-right: 0%;
-    margin-left: 24%;
+    margin-left: 29.5%;
     margin-bottom: 3%;
 }
 
@@ -124,7 +159,7 @@
 }
 
 #prev_sub_button a{
-   padding: 80px 10px 80px 10px;
+   padding: 80px 20px 80px 20px;
 }
 
 
@@ -181,8 +216,9 @@
 
 #choose_file_button{
     background-color: #8B0000;
+    border-radius: 7px;
     color: #fff;
-    padding: 15px;
+    padding: 5px;
     margin-left: 15px;
     margin-top: 2%;
     display: inline-block;
@@ -211,7 +247,7 @@
 /*  */
 #prev_sub_table{
     margin-top: 5%;
-    margin-left: 17.5%;
+    margin-left: 25%;
 }
 
 #prev_sub_table th{
@@ -233,21 +269,45 @@ tr:nth-child(even) {
 }
 
 .wrap{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
+    /* background-color: green; */
+    margin-left: 20%;
+    margin-right: 20%;
+    
 }
 
-.score_area{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.bar{
+    margin-bottom: 2%;
+}
+
+.score_title{
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 120px;
+}
+
+.bar{
+    height: 10px;
+    background-color: #282828;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.score-per{
+    height: 10px;
+    background: linear-gradient(to bottom right, #ff6b6b, #d13639);
+}
+
+.score-percentage{
+   font-size: medium;
+}
+
+.little-wrap{
+    display:  none;
 }
 
 #view_prev{
     display: none;
-    color: #333333;
+    color: #3d3a3a;
     margin-top: 5%;
     margin-bottom: 5%;
 }
@@ -270,7 +330,7 @@ tr:nth-child(even) {
     color: #fff;
     background-color: #8B0000;
     padding: 15px;
-    margin-left: 45%;
+    margin-left: 38%;
     margin-top: 15%;
 }
 
@@ -278,10 +338,69 @@ tr:nth-child(even) {
     cursor:pointer;
 }
 
+#plag_button{
+    color: #fff;
+    background-color: #8B0000;
+    
+    padding: 15px;
+    padding-right: 0px;
+    margin-left: 35%;
+    margin-top: 15%;
+}
+
+#plag_button:hover, .view_more:hover{
+    cursor:pointer;
+}
+
+/*  */
+#view_prev_plag{
+    color: #333333;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#view_prev_plag h2{
+    font-weight: lighter;
+    text-align: center;
+}
+
+#view_prev_plag div{
+    background-color: #F5F5F5;
+    padding: 60px;
+    padding-bottom: 200px;
+}
+
+#view_proposal{
+    margin-bottom: 4%;
+}
+
+#back_button{
+    color: #fff;
+    background-color: #8B0000;
+    padding: 15px;
+    padding-left: 27px;
+    margin-left: 43%;
+    margin-top: 15%;
+}
+
+
 /* Reusable code for Footer */
 footer{
     background-color: #605A5A;
     margin-top: 5%;
     padding: 85px;
    
+}
+
+.foot-message{
+    
+    font-size:30px ;
+}
+
+#foot_logo{
+    width: 100px; height: auto;
+}
+
+.socials{
+    float: right;
 }

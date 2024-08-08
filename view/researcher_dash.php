@@ -25,10 +25,10 @@
 
         <div id="menu_bar">
             <div class="inner_menu_bar">
-                <a href="#">Home</a>
-                <a href="#">About Us</a>
-                <a href="#">Reading</a>
-                <a href="#">Contact US</a>
+                <a href="lp.php">Home</a>
+                <a href="researcher_plagiarism_view.php">Plagiarism checker</a>
+                <a href="researcher_dash.php">Submit a paper</a>
+            
             </div>
             <div id="User_profile">
                 <span><p>Name</p></span>
