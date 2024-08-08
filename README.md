@@ -59,15 +59,5 @@ Review Proposals: Manage and review submitted proposals.
 Manage Users: Add or remove users and assign roles.
 File Structure
 
-kaiju_no2_IRB/
-├── assets/                   # Contains images and other assets
-├── css/                      # Stylesheets for the application
-├── db/                       # SQL scripts for database setup
-├── settings/                 # Configuration files
-├── uploads/                  # Uploaded documents
-├── view/                     # PHP files for different views
-├── .git/                     # Git configuration files
-└── README.md                 # Project documentation
-
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
