@@ -182,10 +182,8 @@
 
         <div id="menu_bar">
             <div class="inner_menu_bar">
-                <a href="researcher_dash.php">Home</a>
+                <a href="researcher_dash.php">Back</a>
                 <a href="#">Plagiarism checker</a>
-                <a href="#">Sign Up</a>
-                <a href="#">Submit a paper</a>
                 <a href="#">Review Paper as reviewer</a>
             </div>
         </div>
