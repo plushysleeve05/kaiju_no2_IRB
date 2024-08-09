@@ -8,7 +8,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch documents with their titles from the database
-$sql = "SELECT title, file_path FROM proposals WHERE status = 'Submitted'";
+$sql = "SELECT title, file_path FROM Proposals WHERE status = 'Submitted'";
 $result = $conn->query($sql);
 ?>
 
@@ -307,7 +307,7 @@ $result = $conn->query($sql);
                 const proposalMap = {
                     <?php
                     // Fetch the mapping of file_path to proposal_id from the database
-                    $sql = "SELECT proposal_id, file_path FROM proposals";
+                    $sql = "SELECT proposal_id, file_path FROM Proposals";
                     $result = $conn->query($sql);
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
