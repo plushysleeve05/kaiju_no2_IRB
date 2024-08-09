@@ -121,7 +121,7 @@
     <header>
         <div class="Logo_section">
             <a href="researcher_dash.php">
-                <img src="../Images/ashesi_logo.png" alt="Ashesi Logo">
+                <!-- <img src="../assets/images/Ashesi_University_Logo_Small_2cm__1_-removebg-preview.png" alt="Ashesi Logo"> -->
                 <div class="IRB_title">
                     <h1>INSTITUTIONAL</h1>
                     <h1>REVIEW</h1>
@@ -136,12 +136,12 @@
                 <a href="researcher_plagiarism_view.php">Plagiarism checker</a>
                 <a href="researcher_dash.php">Submit a paper</a>
             </div>
-            <div id="User_profile">
+            <!-- <div id="User_profile">
                 <span>
                     <p>Name</p>
                 </span>
                 <span><img src="../images/profile_img.png" alt="Profile Image" height="30"></span>
-            </div>
+            </div> -->
         </div>
     </header>
 

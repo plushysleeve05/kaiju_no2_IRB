@@ -24,9 +24,9 @@
         <li><a href="view_documents.php">Review Paper as reviewer</a></li> <!-- Added a link for completeness -->
       </ul>
     </nav>
-    <div class="profile">
+    <!-- <div class="profile">
       <p id="username">John Doe</p>
-    </div>
+    </div> -->
   </div>
   <main>
     <!-- HERO SECTION -->

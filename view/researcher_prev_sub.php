@@ -183,8 +183,8 @@
         <div id="menu_bar">
             <div class="inner_menu_bar">
                 <a href="researcher_dash.php">Back</a>
-                <a href="#">Plagiarism checker</a>
-                <a href="#">Review Paper as reviewer</a>
+                <a href="researcher_plagiarism_view.php">Plagiarism checker</a>
+                <a href="view_documents.php">Review Paper as reviewer</a>
             </div>
         </div>
 

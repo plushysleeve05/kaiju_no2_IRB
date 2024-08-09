@@ -299,33 +299,33 @@ $result = $conn->query($sql);
             </form>
         </div>
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
-    const documentSelect = document.querySelector('select[name="document"]');
-    const proposalIdInput = document.getElementById('proposal_id');
+            document.addEventListener('DOMContentLoaded', function() {
+                const documentSelect = document.querySelector('select[name="document"]');
+                const proposalIdInput = document.getElementById('proposal_id');
 
-    // Assume this is a map of file paths to proposal IDs (fetched from the server)
-    const proposalMap = {
-        <?php
-        // Fetch the mapping of file_path to proposal_id from the database
-        $sql = "SELECT proposal_id, file_path FROM proposals";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "'" . $row['file_path'] . "': " . $row['proposal_id'] . ",";
-            }
-        }
-        ?>
-    };
+                // Assume this is a map of file paths to proposal IDs (fetched from the server)
+                const proposalMap = {
+                    <?php
+                    // Fetch the mapping of file_path to proposal_id from the database
+                    $sql = "SELECT proposal_id, file_path FROM proposals";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "'" . $row['file_path'] . "': " . $row['proposal_id'] . ",";
+                        }
+                    }
+                    ?>
+                };
 
-    // Update the hidden field when the document selection changes
-    documentSelect.addEventListener('change', function () {
-        const selectedFilePath = documentSelect.value;
-        if (proposalMap[selectedFilePath]) {
-            proposalIdInput.value = proposalMap[selectedFilePath];
-        }
-    });
-});
 
+                // Update the hidden field when the document selection changes
+                documentSelect.addEventListener('change', function() {
+                    const selectedFilePath = documentSelect.value;
+                    if (proposalMap[selectedFilePath]) {
+                        proposalIdInput.value = proposalMap[selectedFilePath];
+                    }
+                });
+            });
         </script>
 
         <?php
