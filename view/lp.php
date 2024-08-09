@@ -37,13 +37,15 @@
         </div>
         <!-- Action buttons -->
         <div class="hero-sec-buttons">
-          <button>
+          <button onclick="window.location.href='researcher_dash.php';">
             Submit your proposal
           </button>
-          <button>
-            <a href="view_documents.php"></a>Access Reviews
+          <button onclick="window.location.href='view_documents.php';">
+            Access Reviews
           </button>
         </div>
+
+      </div>
       </div>
       <div class="svg2-container">
         <img src="../assets/images/hpimg.svg" alt="Decorative SVG" class="svg2-image" />

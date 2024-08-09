@@ -4,28 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plagiarism Checker</title>
+    <title>Plagiarism Checker | Ashesi IRB</title>
+    <link rel="stylesheet" href="../css/researcher_dash.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
         .container {
-            width: 80%;
-            margin: 20px auto;
+            width: 60%;
+            margin: 50px auto;
             background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
         }
 
         .header,
         .footer {
-            background-color: #800000;
+            background-color: #B13635;
             color: #fff;
-            padding: 10px 0;
+            padding: 20px;
             text-align: center;
         }
 
@@ -33,7 +28,14 @@
         .footer a {
             color: #fff;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #333333;
+            margin-bottom: 30px;
+            text-align: center;
         }
 
         .form-group {
@@ -43,42 +45,107 @@
         textarea {
             width: 100%;
             height: 200px;
-            padding: 10px;
+            padding: 15px;
             font-size: 16px;
             margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
         }
 
         .submit-button {
-            background-color: #800000;
+            background-color: #B13635;
             color: #fff;
-            padding: 10px 20px;
+            padding: 15px 30px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #8B0000;
         }
 
         .plagiarism-score {
-            margin-top: 20px;
+            margin-top: 30px;
             font-size: 24px;
             font-weight: bold;
+            text-align: center;
         }
 
         .sources {
             margin-top: 20px;
             font-size: 18px;
         }
+
+        .sources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sources li {
+            padding: 10px;
+            background-color: #f4f4f4;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #B13635;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            display: block;
+            width: 150px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button:hover {
+            background-color: #8B0000;
+        }
     </style>
 </head>
 
 <body>
-    <div class="header">
-        <div class="container">
-            <a href="#">Home</a>
-            <a href="#">Plagiarism checker</a>
-            <a href="#">Submit a paper</a>
+    <!-- Reusable Header -->
+    <header>
+        <div class="Logo_section">
+            <a href="researcher_dash.php">
+                <img src="../Images/ashesi_logo.png" alt="Ashesi Logo">
+                <div class="IRB_title">
+                    <h1>INSTITUTIONAL</h1>
+                    <h1>REVIEW</h1>
+                    <h1>BOARD</h1>
+                </div>
+            </a>
         </div>
-    </div>
+
+        <div id="menu_bar">
+            <div class="inner_menu_bar">
+                <a href="lp.php">Home</a>
+                <a href="researcher_plagiarism_view.php">Plagiarism checker</a>
+                <a href="researcher_dash.php">Submit a paper</a>
+            </div>
+            <div id="User_profile">
+                <span>
+                    <p>Name</p>
+                </span>
+                <span><img src="../images/profile_img.png" alt="Profile Image" height="30"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
     <div class="container">
         <h1>Plagiarism Checker</h1>
 
@@ -135,6 +202,10 @@
 
         <a href="index.php" class="button">Go back</a>
     </div>
+
+    <footer>
+        <!-- Footer content goes here -->
+    </footer>
 </body>
 
 </html>

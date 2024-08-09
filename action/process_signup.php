@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        echo "A user with this email already exists.";
+        echo "<script>alert('A user with this email already exists.'); window.location.href = '../index.php';</script>";
     } else {
         // Hash the password
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['username'] = $first_name;
             $_SESSION['role_id'] = 3; // Default role is 'User'
 
-            header("Location: ../view/login.php");
+            header("Location: ../index.php");
             exit;
         } else {
             echo "Something went wrong. Please try again later.";

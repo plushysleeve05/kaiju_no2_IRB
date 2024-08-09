@@ -27,7 +27,7 @@
                     <input type="password" name="password" placeholder="Enter your password" required>
                     <button type="submit">Sign up</button>
                     <div class="links">
-                        <a href="login.php">Already have an account? Login</a>
+                        <a href="../index.php">Already have an account? Login</a>
                     </div>
                 </form>
             </div>
