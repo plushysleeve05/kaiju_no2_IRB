@@ -1,6 +1,11 @@
 # kaiju_no2_IRB
+Members:
+Arnold Nii Aryeequaye
+Ayo Balima
+Charles Opoku
+Samuel Dartey-Baah
 
-Ashesi IRB Management System
+# Ashesi Institutional Review Board (IRB) Management System
 Project Overview
 The Ashesi Institutional Review Board (IRB) Management System is a web-based application designed to streamline the process of reviewing and approving research proposals at Ashesi University. It provides functionalities for researchers, administrators, and reviewers to manage submissions, track the review process, and ensure compliance with ethical standards.
 
@@ -60,4 +65,4 @@ Manage Users: Add or remove users and assign roles.
 File Structure
 
 License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the Ashesi University License. See the LICENSE file for details.
