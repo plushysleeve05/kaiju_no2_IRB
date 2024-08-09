@@ -2,7 +2,7 @@
 define("DBHOST", "localhost");
 define("DBNAME", "ashesi_irb");
 define("DBUSER", "root");
-define("DBPASS", "");
+define("DBPASS", "Irbsystem_2025");
 
 // Create connection
 $conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
