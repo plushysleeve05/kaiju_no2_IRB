@@ -1,8 +1,11 @@
 # kaiju_no2_IRB
-Members:
+## Members:
 Arnold Nii Aryeequaye
+
 Ayo Balima
+
 Charles Opoku
+
 Samuel Dartey-Baah
 
 # Ashesi Institutional Review Board (IRB) Management System
@@ -53,8 +56,6 @@ Dashboard: Custom dashboards for researchers and administrators to manage their 
 Plagiarism Check: Integrated plagiarism checking for submitted documents.
 Responsive Design: The application is designed to be fully responsive and user-friendly.
 
-Link to site:
-
 Usage
 For Researchers
 Submit Proposals: Upload your research proposals and related documents.
@@ -62,7 +63,8 @@ Track Status: View the status of your submissions and any feedback provided.
 For Administrators
 Review Proposals: Manage and review submitted proposals.
 Manage Users: Add or remove users and assign roles.
-File Structure
+
+## Link to site:
 
 License
 This project is licensed under the Ashesi University License. See the LICENSE file for details.
