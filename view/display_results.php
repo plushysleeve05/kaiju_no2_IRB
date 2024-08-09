@@ -174,7 +174,7 @@ $detailed_comments = $ai_results; // Adding detailed comments
     <div class="container">
         <div class="notification-panel">
             <h2>Notification Panel</h2>
-            <p>Failed to load notifications.</p>
+            <p>New Notifications will load here when.</p>
         </div>
         <div class="buttons">
             <a href="#">View Previous Submissions</a>
@@ -186,10 +186,10 @@ $detailed_comments = $ai_results; // Adding detailed comments
                 <h4>Overall Score</h4>
                 <p><?php echo htmlspecialchars($overall_score); ?></p>
             </div>
-            <div class="section">
+            <!-- <div class="section">
                 <h4>Overall Comment</h4>
                 <p><?php echo htmlspecialchars($overall_comment); ?></p>
-            </div>
+            </div> -->
             <div class="section">
                 <h4>Section Scores and Comments</h4>
                 <?php foreach ($scores as $section => $score): ?>
@@ -200,17 +200,6 @@ $detailed_comments = $ai_results; // Adding detailed comments
                         </div>
                     </div>
                 <?php endforeach; ?>
-            </div>
-        </div>
-        <div class="comments-section">
-            <h3>Reviewer Comments</h3>
-            <div class="comments">
-                <form action="display_results.php" method="POST">
-                    <textarea name="reviewer_comments" placeholder="Add your comments here..."><?php echo htmlspecialchars($reviewer_comments); ?></textarea>
-                    <div class="submit-comments">
-                        <button type="submit">Submit Comments</button>
-                    </div>
-                </form>
             </div>
         </div>
         <div class="detailed-comments-section">
@@ -226,6 +215,17 @@ $detailed_comments = $ai_results; // Adding detailed comments
                         <p><?php echo nl2br(htmlspecialchars($value)); ?></p>
                     <?php endif; ?>
                 <?php endforeach; ?>
+            </div>
+        </div>
+        <div class="comments-section">
+            <h3>Reviewer Comments</h3>
+            <div class="comments">
+                <form action="display_results.php" method="POST">
+                    <textarea name="reviewer_comments" placeholder="Add your comments here..."><?php echo htmlspecialchars($reviewer_comments); ?></textarea>
+                    <div class="submit-comments">
+                        <button type="submit">Submit Comments</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
